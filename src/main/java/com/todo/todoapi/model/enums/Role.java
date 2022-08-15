@@ -1,16 +1,16 @@
 package com.todo.todoapi.model.enums;
 
-public enum Status {
+public enum Role {
 
-  PENDING("Pending"),
-  COMPLETED("Completed");
+  USER("User"),
+  ADMIN("Admin");
 
   private final String text;
 
   /**
    * @param text
    */
-  Status(final String text) {
+  Role(final String text) {
     this.text = text;
   }
 
