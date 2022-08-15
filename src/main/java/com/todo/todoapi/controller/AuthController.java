@@ -62,8 +62,8 @@ public class AuthController {
           Algorithm algorithm = Algorithm.HMAC256("T0dOAP1v3rSion2".getBytes());
           JWTVerifier verifier = JWT.require(algorithm).build();
           DecodedJWT decodedJWT = verifier.verify(refresh_token);
-          String email = decodedJWT.getSubject();
-          UserDto user = userService.getUser(email);
+          String username = decodedJWT.getSubject();
+          UserDto user = userService.getUser(username);
           
           String access_token = com.auth0.jwt.JWT.create()
             .withSubject(user.getUsername())

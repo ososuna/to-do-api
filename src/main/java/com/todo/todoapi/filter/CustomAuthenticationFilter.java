@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
   private static final String APPLICATION_JSON_VALUE = "application/json";
-  private static final String INVALID_CREDENTIALS_MSG = "Invalid email or password";
+  private static final String INVALID_CREDENTIALS_MSG = "Invalid username or password";
   private final AuthenticationManager authenticationManager;
   private final UserService userService;
 
@@ -44,9 +44,9 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
   @Override
   public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
       throws AuthenticationException {
-    String email = request.getParameter("email");
+    String username = request.getParameter("username");
     String password = request.getParameter("password");
-    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(email, password);
+    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
     return authenticationManager.authenticate(token);
   }
 

@@ -57,7 +57,7 @@ public class AuthService implements UserDetailsService {
     if (userRepository.findByUsername(request.getUsername()).isPresent()) {
       throw new ResponseStatusException(
         HttpStatus.BAD_REQUEST,
-        "Alredy existing email"
+        "Alredy existing username"
       );
     }
 
@@ -67,7 +67,7 @@ public class AuthService implements UserDetailsService {
         "Password must be at least 6 characters long"
       );
     }
-    
+
     request.setPassword(passwordEncoder.encode(request.getPassword()));
 
     User user = new User();

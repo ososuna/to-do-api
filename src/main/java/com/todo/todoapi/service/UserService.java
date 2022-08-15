@@ -32,14 +32,4 @@ public class UserService {
     return userDto;
   }
 
-  public User createUser() {
-    User user = new User();
-    user.setName("Jian");
-    user.setLastName("Yang");
-    user.setUsername("IHateErlich");
-    user.setPassword("password");
-    user.setActive(true);
-    return userRepository.save(user);
-  }
-
 }
