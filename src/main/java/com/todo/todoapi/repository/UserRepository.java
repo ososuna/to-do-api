@@ -1,9 +1,9 @@
 package com.todo.todoapi.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.todo.todoapi.model.User;
 
-public interface UserRepository extends CrudRepository<User, String> {
+public interface UserRepository extends MongoRepository<User, String> {
 
 }

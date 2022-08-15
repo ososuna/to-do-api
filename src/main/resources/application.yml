@@ -11,4 +11,4 @@ spring:
 server:
   port: ${app_port:3001}
   servlet:
-    context-path: /api/v1
+    context-path: /todo/api/v1
