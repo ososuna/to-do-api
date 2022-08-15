@@ -6,8 +6,8 @@ spring:
       matching-strategy: ANT_PATH_MATCHER
   data:
     mongodb:
-      uri: mongodb://${datasource_url:localhost}:27017/${db_name:to-do}
-      database: ${db_name:to-do}
+      uri: mongodb://${datasource_url:localhost}:27017/${db_name:toDo}
+      database: ${db_name:toDo}
 server:
   port: ${app_port:3001}
   servlet:
