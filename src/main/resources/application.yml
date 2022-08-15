@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: to-do-api
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  data:
+    mongodb:
+      uri: mongodb://${datasource_url:localhost}:27017/${db_name:to-do}
+      database: ${db_name:to-do}
+server:
+  port: ${app_port:3001}
+  servlet:
+    context-path: /api/v1
