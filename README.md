@@ -16,7 +16,7 @@ For building and running the application you need:
 
 ## Running the application locally
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.beer.api.beer.BeerApplication` class from your IDE.
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.todo.todoapi.TodoApiApplication` class from your IDE.
 
 Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
 
@@ -35,13 +35,13 @@ mvn package
 Then you need to build the Docker image:
 
 ```shell
-docker build -t to-do-api .
+docker build -t to-do-api-v2 .
 ```
   
 Now you can run the image:
   
 ```shell
-docker run --name to-do-api -p 3001:3001 to-do-api
+docker run --name to-do-api-v2 -p 3001:3001 to-do-api-v2
 ```
 
 ## Class Diagram
