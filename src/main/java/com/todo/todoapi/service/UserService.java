@@ -16,9 +16,9 @@ public class UserService {
 
   public User createUser() {
     User user = new User();
-    user.setName("John");
-    user.setLastName("Doe");
-    user.setUsername("username");
+    user.setName("Jian");
+    user.setLastName("Yang");
+    user.setUsername("IHateErlich");
     user.setPassword("password");
     user.setActive(true);
     return userRepository.save(user);
