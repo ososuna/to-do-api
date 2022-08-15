@@ -43,3 +43,6 @@ Now you can run the image:
 ```shell
 docker run --name to-do-api -p 3001:3001 to-do-api
 ```
+
+## Class Diagram
+<img width="500" src="assets/class-diagram.png"/>
