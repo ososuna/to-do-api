@@ -44,5 +44,10 @@ Now you can run the image:
 docker run --name to-do-api-v2 -p 3001:3001 to-do-api-v2
 ```
 
+## Run jacoco to check coverage in unit testing
+```shell
+mvn clean org.jacoco:jacoco-maven-plugin:0.8.8:prepare-agent
+```
+
 ## Class Diagram
 <img width="500" src="assets/class-diagram.png"/>
