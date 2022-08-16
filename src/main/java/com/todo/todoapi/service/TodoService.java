@@ -35,18 +35,22 @@ public class TodoService {
   }
 
   public ToDo createTodo(String userId, ToDo todo) throws TodoException {
-    var user = userRepository.findById(userId).get();
-    if (user != null) {
-      todo.setUser(user);
+    var user = userRepository.findById(userId);
+    if (!user.isEmpty()) {
+      todo.setUser(user.get());
       return toDoRepository.save(todo);
     }
     throw new NotFoundException("User not found");
   }
 
-  public ToDo updateTodo(TodoDto todoDto) {
-    ToDo todo = new ToDo();
-    BeanUtils.copyProperties(todoDto, todo);
-    return toDoRepository.save(todo);
+  public ToDo updateTodo(TodoDto todoDto) throws TodoException {
+
+    var todo = toDoRepository.findById(todoDto.getId());
+    if (!todo.isEmpty()) {
+      BeanUtils.copyProperties(todoDto, todo.get());
+      return toDoRepository.save(todo.get());
+    }
+    throw new NotFoundException("Todo not found");
   }
 
 }

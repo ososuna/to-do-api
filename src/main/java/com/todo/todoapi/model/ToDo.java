@@ -19,7 +19,6 @@ public class ToDo {
 
   @Id
   private String id;
-
   private String title;
   private String description;
   private LocalDate date;

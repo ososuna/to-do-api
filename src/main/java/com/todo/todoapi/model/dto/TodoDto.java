@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class TodoDto {
+  private String id;
   private String title;
   private String description;
   private LocalDate date;

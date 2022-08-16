@@ -37,7 +37,7 @@ public class TodoController {
   }
 
   @PutMapping
-  public ResponseEntity<ToDo> updateTodo(@RequestParam TodoDto todoDto) {
+  public ResponseEntity<ToDo> updateTodo(@RequestParam TodoDto todoDto) throws TodoException {
     return new ResponseEntity<>(todoService.updateTodo(todoDto), HttpStatus.OK);
   }
 
