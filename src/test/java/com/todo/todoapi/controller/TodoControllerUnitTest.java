@@ -2,12 +2,15 @@ package com.todo.todoapi.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -34,12 +37,21 @@ public class TodoControllerUnitTest {
   TodoException badRequestException = new BadRequestException("error");
 
   @Test
-  public void testGetAllActiveTodos() throws Exception {
+  void testGetAllActiveTodos() throws Exception {
     List<ToDo> todos = new ArrayList<>();
     when(todoService.getTodo()).thenReturn(todos);
     this.mockMvc.perform(get("/todo/api/v2/todo"))
       .andExpect(status().isOk())
       .andExpect(result -> result.getClass().equals(List.class));
+  }
+
+  @Test
+  public void testCreateTodoSuccess() throws Exception {
+    ToDo todo = new ToDo();
+    when(todoService.createTodo(null, todo)).thenReturn(todo);
+    this.mockMvc.perform(post("/todo/api/v2/todo"))
+      .andExpect(status().isOk())
+      .andExpect(result -> result.getClass().equals(ToDo.class));
   }
 
 }
