@@ -25,7 +25,7 @@ import com.todo.todoapi.service.TodoService;
 
 @WebMvcTest(TodoController.class)
 @AutoConfigureMockMvc(addFilters = false)
-public class TodoControllerUnitTest {
+class TodoControllerUnitTest {
   
   @Autowired
   private MockMvc mockMvc;
@@ -46,7 +46,7 @@ public class TodoControllerUnitTest {
   }
 
   @Test
-  public void testCreateTodoSuccess() throws Exception {
+  void testCreateTodoSuccess() throws Exception {
     ToDo todo = new ToDo();
     when(todoService.createTodo(null, todo)).thenReturn(todo);
     this.mockMvc.perform(post("/todo/api/v2/todo"))
