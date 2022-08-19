@@ -2,6 +2,7 @@ package com.todo.todoapi.service;
 
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -25,11 +26,7 @@ public class UserService {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
     }
     var userDto = new UserDto();
-    userDto.setId(user.get().getId());
-    userDto.setUsername(user.get().getUsername());
-    userDto.setName(user.get().getName());
-    userDto.setLastName(user.get().getLastName());
-    userDto.setRole(user.get().getRole());
+    BeanUtils.copyProperties(user.get(), userDto);
     return userDto;
   }
 
