@@ -41,6 +41,13 @@ public class TodoService {
     .collect(Collectors.toList());
   }
 
+  public List<TodoDto> getToDosByUser(String userId) throws TodoException {
+    return toDoRepository.findAllByActiveTrueAndUserIdIsAndStatusIs(userId, Status.PENDING.toString().toUpperCase())
+    .stream()
+    .map(toDoUtil::convertToDotoDto)
+    .collect(Collectors.toList());
+  }
+
   public ToDo createTodo(String userId, NewToDoDto todo) throws TodoException {
     var user = userRepository.findById(userId).orElseThrow(
       () -> new NotFoundException("User not found")

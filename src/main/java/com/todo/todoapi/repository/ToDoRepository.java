@@ -8,6 +8,6 @@ import com.todo.todoapi.model.ToDo;
 
 public interface ToDoRepository extends MongoRepository<ToDo, String> {
   List<ToDo> findAll();
-
   List<ToDo> findAllByActiveTrue();
+  List<ToDo> findAllByActiveTrueAndUserIdIsAndStatusIs(String userId, String status);
 }
