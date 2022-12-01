@@ -17,5 +17,4 @@ public class TodoDto {
   private String description;
   private LocalDate date;
   private Status status;
-  private boolean active;
 }

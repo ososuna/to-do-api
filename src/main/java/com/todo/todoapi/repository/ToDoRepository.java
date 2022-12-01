@@ -9,5 +9,5 @@ import com.todo.todoapi.model.ToDo;
 public interface ToDoRepository extends MongoRepository<ToDo, String> {
   List<ToDo> findAll();
 
-  List<ToDo> findByActiveTrue();
+  List<ToDo> findAllByActiveTrue();
 }
