@@ -28,7 +28,7 @@ public class TodoController {
   public TodoController(TodoService todoService) {
     this.todoService = todoService;
   }
-  
+
   @GetMapping
   public ResponseEntity<List<TodoDto>> getAllActiveTodos() throws TodoException {
     return new ResponseEntity<>(todoService.getToDos(), HttpStatus.OK);

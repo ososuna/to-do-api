@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AuthService implements UserDetailsService {
   
-  private final String USER_NOT_FOUND_MSG = "User not found";
+  private final String USER_NOT_FOUND_MSG = "Usuario no encontrado";
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
 
@@ -57,14 +57,14 @@ public class AuthService implements UserDetailsService {
     if (userRepository.findByUsername(request.getUsername()).isPresent()) {
       throw new ResponseStatusException(
         HttpStatus.BAD_REQUEST,
-        "Alredy existing username"
+        "El usuario ya existe"
       );
     }
 
     if (request.getPassword().length() < 6) {
       throw new ResponseStatusException(
         HttpStatus.BAD_REQUEST,
-        "Password must be at least 6 characters long"
+        "La contraseña debe contener al menos 6 caracteres"
       );
     }
 

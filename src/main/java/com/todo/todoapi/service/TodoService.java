@@ -51,7 +51,7 @@ public class TodoService {
 
   public ToDo createTodo(String userId, NewToDoDto todo) throws TodoException {
     var user = userRepository.findById(userId).orElseThrow(
-      () -> new NotFoundException("User not found")
+      () -> new NotFoundException("Usuario no encontrado")
     );
     var newTodo = new ToDo();
     BeanUtils.copyProperties(todo, newTodo);
@@ -64,7 +64,7 @@ public class TodoService {
 
   public ToDo updateTodo(String id, UpdateToDoDto updateToDoDto) throws TodoException {
     var toDo = toDoRepository.findById(id).orElseThrow(
-      () -> new NotFoundException("Todo not found")
+      () -> new NotFoundException("To do no encontrado")
     );
     BeanUtils.copyProperties(updateToDoDto, toDo);
     return toDoRepository.save(toDo);

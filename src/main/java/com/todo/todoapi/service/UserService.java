@@ -23,7 +23,7 @@ public class UserService {
   public UserDto getUser(String username) throws ResponseStatusException {
     Optional<User> user = userRepository.findByUsername(username);
     if (user.isEmpty()) {
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
     }
     var userDto = new UserDto();
     BeanUtils.copyProperties(user.get(), userDto);
