@@ -12,6 +12,7 @@ import com.todo.todoapi.exception.TodoException;
 import com.todo.todoapi.model.ToDo;
 import com.todo.todoapi.model.dto.NewToDoDto;
 import com.todo.todoapi.model.dto.TodoDto;
+import com.todo.todoapi.model.dto.UpdateToDoDto;
 import com.todo.todoapi.model.enums.Status;
 import com.todo.todoapi.repository.ToDoRepository;
 import com.todo.todoapi.repository.UserRepository;
@@ -61,14 +62,12 @@ public class TodoService {
     return toDoRepository.save(newTodo);
   }
 
-  public ToDo updateTodo(TodoDto todoDto) throws TodoException {
-
-    var todo = toDoRepository.findById(todoDto.getId());
-    if (!todo.isEmpty()) {
-      BeanUtils.copyProperties(todoDto, todo.get());
-      return toDoRepository.save(todo.get());
-    }
-    throw new NotFoundException("Todo not found");
+  public ToDo updateTodo(String id, UpdateToDoDto updateToDoDto) throws TodoException {
+    var toDo = toDoRepository.findById(id).orElseThrow(
+      () -> new NotFoundException("Todo not found")
+    );
+    BeanUtils.copyProperties(updateToDoDto, toDo);
+    return toDoRepository.save(toDo);
   }
 
 }
